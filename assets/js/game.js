@@ -160,6 +160,7 @@ var randomNumber = function (min, max) {
     return value;
 };
 
+// player info
 var playerInfo = {
     name: window.prompt("What is your robot's name?"),
     health: 100,
@@ -195,11 +196,7 @@ var playerInfo = {
 var enemyInfo = [
     {
         name: "Roborto",
-        attack: randomNumber(10, 14),
-        shield: {
-            type: "wood",
-            strenght: 10
-        }
+        attack: randomNumber(10, 14)
     },
     {
         name: "Amy Android",

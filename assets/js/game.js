@@ -117,27 +117,22 @@ var fight = function (enemy) {
     var shop = function () {
         // ask the player what they'd like to do
         var shopOptionPrompt = window.prompt(
-            "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
+            "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE.");
 
         // use switch to carry out action
+        shopOptionPrompt = parseInt(shopOptionPrompt);
         switch (shopOptionPrompt) {
-            case "REFILL": // new case
-            case "refill":
+            case 1:
                 playerInfo.refillHealth();
                 break;
-            case "UPGRADE": // new case
-            case "upgrade":
+            case 2:
                 playerInfo.upgradeAttack();
                 break;
-            case "LEAVE": // new case
-            case "leave":
+            case 3:
                 window.alert("Leaving the store.");
-
-                // do nothing, so function will end
                 break;
             default:
                 window.alert("You did not pick a valid option. Try again.");
-
                 // call shop() again to force player to pick a valid option
                 shop();
                 break;
@@ -167,15 +162,15 @@ var fightOrSkip = function () {
     var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
     // Conditional Recursive Function Call (same as below)
-    /* if (promptFight === "" || promptFight === null) {
-        window.alert("You need to provide a valid answer! Please try again.");
-        return fightOrSkip();
-    } */
-    // if the `promptFight` is NOT a valid value, then execute the following statements.
-    if (!promptFight) {
+    if (promptFight === "" || promptFight === null) {
         window.alert("You need to provide a valid answer! Please try again.");
         return fightOrSkip();
     }
+    // if the `promptFight` is NOT a valid value, then execute the following statements.
+    /* if (!promptFight) {
+         window.alert("You need to provide a valid answer! Please try again.");
+         return fightOrSkip();
+     }*/
 
     // if player picks "skip" confirm and then stop the loop
     promptFight = promptFight.toLowerCase();
@@ -187,7 +182,7 @@ var fightOrSkip = function () {
         if (confirmSkip) {
             window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
             // subtract money from playerMoney for skipping
-            playerInfo.playerMoney = playerInfo.money - 10;
+            playerInfo.Money = Math.max(0, playerInfo.money - 10);
             // return true if player wants to leave
             return true;
         }
@@ -232,10 +227,6 @@ var enemyInfo = [
     {
         name: "Roborto",
         attack: randomNumber(10, 14),
-        shield: {
-            type: "wood",
-            strenght: 10
-        }
     },
     {
         name: "Amy Android",
@@ -246,8 +237,6 @@ var enemyInfo = [
         attack: randomNumber(10, 14)
     }
 ];
-// You can also log multiple values at once like this
-console.log(playerInfo.name, playerInfo.health, playerInfo.attack, playerInfo.money);
 
 // start the game when the page loads
 startGame();

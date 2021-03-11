@@ -181,9 +181,6 @@ var randomNumber = function (min, max) {
     return value;
 };
 
-<<<<<<< HEAD
-// player info
-=======
 var fightOrSkip = function () {
     // ask player if they'd like to fight or skip using fightOrSkip function
     var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -218,7 +215,6 @@ var fightOrSkip = function () {
 };
 
 // GAME INFO / VARIABLES
->>>>>>> develop
 var playerInfo = {
     name: getPlayerName(),
     health: 100,
@@ -254,11 +250,7 @@ var playerInfo = {
 var enemyInfo = [
     {
         name: "Roborto",
-<<<<<<< HEAD
-        attack: randomNumber(10, 14)
-=======
         attack: randomNumber(10, 14),
->>>>>>> develop
     },
     {
         name: "Amy Android",
